@@ -1,5 +1,1 @@
 .env
-public/oscap/politicas/*
-public/oscap/resultados/*
-public/oscap/scripts-remediacion/*
-public/oscap/temporales/*
