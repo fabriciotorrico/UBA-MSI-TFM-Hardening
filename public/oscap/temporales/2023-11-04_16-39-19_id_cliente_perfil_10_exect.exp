@@ -1,7 +1,0 @@
-#!/usr/bin/expect -f
-spawn oscap-ssh cliente1@10.0.0.21 22 xccdf eval --profile xccdf_org.ssgproject.content_profile_anssi_np_nt28_high --results /var/www/html/hardening/public/oscap/resultados/2023-11-04_16-39-19_id_cliente_perfil_10_result.xml --report /var/www/html/hardening/public/oscap/resultados/2023-11-04_16-39-19_id_cliente_perfil_10_report.html /var/www/html/hardening/public/oscap/politicas/ssg-ubuntu1804-ds.xml
-expect "cliente1@10.0.0.21's password:" {
-  send "cliente1\r"
-}
-expect eof
-interact
