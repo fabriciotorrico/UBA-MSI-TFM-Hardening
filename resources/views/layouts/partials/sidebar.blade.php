@@ -63,6 +63,10 @@
 
          @endcan
 
+         @can('solo_visualizar')
+             <li><a href="{{ url('listado_escaneos') }}"><i class='fa fa-heartbeat'></i>Resultados y Hardening</a></li>
+         @endcan
+
          <!--li class="treeview">
              <a href="{{ url('/manual') }}"><i class='fa fa-book'></i> <span>Manual</span> </a>
          </li-->

@@ -43,7 +43,6 @@ class PersonasController extends Controller
           $persona->expedido=strtoupper($request->input("expedido"));
           $persona->fecha_nacimiento=$request->input("nacimiento");
           $persona->telefono_celular=$request->input("telefono");
-          $persona->miembro_directiva=$request->input("miembro_directiva");
           $persona->telefono_referencia="0";
           // $persona->direccion=ucwords(strtolower($request->input("direccion")));
           $persona->direccion="";
@@ -383,7 +382,6 @@ class PersonasController extends Controller
           $persona->expedido=$request->input("expedido");
           $persona->fecha_nacimiento=$request->input("nacimiento");
           $persona->telefono_celular=$request->input("telefono");
-          $persona->miembro_directiva=$request->input("miembro_directiva");
           $persona->id_responsable_registro=Auth::user()->id;
 
           //Si se puede registrar, enviamos el mensaje correspondiente

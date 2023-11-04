@@ -91,15 +91,6 @@
                         <input type="input" name="telefono" placeholder="" class="form-control" value="{{ old('telefono') }}" pattern="[0-9]{6,9}" onkeydown="return event.keyCode !== 69" title="Introduzca un número valido" required/>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label >Miembro de la Directiva</label>
-                        <select class="form-control" name="miembro_directiva">
-                          <option value="0">No</option>
-                          <option value="1">Si</option>
-                        </select>
-                    </div>
-                </div>
 
                 {{-- <div class="col-md-6">
                     <div class="form-group">

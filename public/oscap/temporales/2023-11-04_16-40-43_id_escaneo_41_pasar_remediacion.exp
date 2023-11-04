@@ -1,0 +1,7 @@
+#!/usr/bin/expect -f
+spawn scp /var/www/html/hardening/public/oscap/scripts-remediacion/2023-11-04_16-40-43_id_escaneo_41.sh cliente1@10.0.0.21:/home/cliente1
+expect "cliente1@10.0.0.21's password:" {
+  send "cliente1\r"
+}
+expect eof
+interact

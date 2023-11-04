@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
   });
 
   //Rutas que necesitan permiso para administrar hardenning politicas, perfiles y reglas 
-  Route::group(['middleware' => ['permissionshinobi:gestion_de_agua']], function () {
+  Route::group(['middleware' => ['permissionshinobi:hardening']], function () {
     //Politicas, perfiles y reglas 
     Route::get('listado_politicas', 'HardeningController@listado_politicas');
     Route::resource('buscar_politicas', 'HardeningController@buscar_politicas');    
@@ -87,17 +87,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('editar_cliente', 'HardeningController@editar_cliente');
     Route::get('listado_clientes_perfiles', 'HardeningController@listado_clientes_perfiles');
     Route::resource('buscar_clientes_perfiles', 'HardeningController@buscar_clientes_perfiles');    
-    Route::get('listado_escaneos', 'HardeningController@listado_escaneos');
     Route::get('form_nuevo_escaneo/{id}', 'HardeningController@form_nuevo_escaneo');
     Route::post('nuevo_escaneo', 'HardeningController@nuevo_escaneo');
-    Route::resource('buscar_escaneos', 'HardeningController@buscar_escaneos');    
-    Route::get('form_resultados_escaneo/{id}', 'HardeningController@form_resultados_escaneo');
     Route::get('form_hardening/{id}', 'HardeningController@form_hardening');
-    Route::post('hardening', 'HardeningController@hardening');   
-    Route::get('form_resultados_hardening/{id}', 'HardeningController@form_resultados_hardening');
+    Route::post('hardening', 'HardeningController@hardening');
   });
 
- //REVISAR...
+  //Rutas visualizacion
+  Route::get('listado_escaneos', 'HardeningController@listado_escaneos');
+  Route::resource('buscar_escaneos', 'HardeningController@buscar_escaneos');    
+  Route::get('form_resultados_escaneo/{id}', 'HardeningController@form_resultados_escaneo');
+  Route::get('form_resultados_hardening/{id}', 'HardeningController@form_resultados_hardening');
+    
+
+ //Importar Personas
  Route::get('import_contacto', 'Excel\ImportPersonaController@index')->name('import_contacto');
  Route::post('import_contacto', 'Excel\ImportPersonaController@import')->name('guardar_import_contacto');
 });

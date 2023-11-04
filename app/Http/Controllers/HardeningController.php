@@ -708,12 +708,24 @@ class HardeningController extends Controller
     $escaneo->activo=1;
     $escaneo->save();   
     
-    return view("listados.listado_escaneos")
-        ->with("mensaje_exito", "Escaneo ejecutado exitosamente.");
+    if(\Auth::user()->isRole('admin')==true){
+      return view("listados.listado_escaneos")
+      ->with('rol_usuario', 'admin')
+      ->with("mensaje_exito", "Escaneo ejecutado exitosamente.");    
+    } elseif(\Auth::user()->isRole('auditor')==true){
+      return view("listados.listado_escaneos")
+      ->with('rol_usuario', 'auditor');    
+    }        
   }
 
   public function listado_escaneos(){
-    return view("listados.listado_escaneos");
+    if(\Auth::user()->isRole('admin')==true){
+      return view("listados.listado_escaneos")
+      ->with('rol_usuario', 'admin');    
+    } elseif(\Auth::user()->isRole('auditor')==true){
+      return view("listados.listado_escaneos")
+      ->with('rol_usuario', 'auditor');    
+    }
   }
 
   public function buscar_escaneos(){
@@ -841,8 +853,14 @@ class HardeningController extends Controller
 
 
     //Devolvemos la vsita con el resultado del comando
-    return view("listados.listado_escaneos")
-            ->with("mensaje_exito", "Hardening ejecutado.");
+    if(\Auth::user()->isRole('admin')==true){
+      return view("listados.listado_escaneos")
+      ->with('rol_usuario', 'admin')      
+      ->with("mensaje_exito", "Hardening ejecutado.");    
+    } elseif(\Auth::user()->isRole('auditor')==true){
+      return view("listados.listado_escaneos")
+      ->with('rol_usuario', 'auditor');    
+    }
   }
 
   public function form_resultados_hardening($id_escaneo){

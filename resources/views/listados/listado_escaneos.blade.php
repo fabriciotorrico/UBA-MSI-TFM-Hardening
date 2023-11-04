@@ -27,7 +27,7 @@
 			</script>
 			@endsection
 	@endif
-<div class="box box-primary">
+	<div class="box box-primary">
 		<div class="box-header">
         <h3 class="box-title">Escaneos Realizados</h3>
         <div class="pull-right box-tools">
@@ -43,6 +43,7 @@
 		</div>
 
 		<div class="box-body table-responsive">
+		  <input type="hidden" id="rol_usuario" value="{{ $rol_usuario }}">
 		  <table id="tabla_escaneos" class="table table-hover table-striped table-bordered">
 			<thead>
 				<th>Id cliente perfil</th>
@@ -100,13 +101,20 @@
             { data: 'escaneo', name: 'escaneo' },
             { data: 'hardening', name: 'hardening' },
             { data: null,  render: function ( data, type, row ) {
-								//if ($("#rol_usuario").val() === 'admin' || $("#rol_usuario").val() === 'super_admin') {
+								if ($("#rol_usuario").val() === 'admin') {
 									if ( row.hardening === "No ejecutado") {
 										return "<td><button type='button' class='btn btn-success btn-xs' onclick='verinfo_escaneo("+data.id_escaneo+","+1+")'> <i class='fa fa-print'> Resultado Escaneo </i></button> <br> <button type='button' class='btn btn-danger btn-xs' onclick='verinfo_escaneo("+data.id_escaneo+","+2+")'> <i class='fa fa-shield'> Ejecutar Hardening </i></button>"
 									} else {
 										return "<td><button type='button' class='btn btn-success btn-xs' onclick='verinfo_escaneo("+data.id_escaneo+","+1+")'> <i class='fa fa-print'> Resultado Escaneo </i></button> <br> <button type='button' class='btn btn-danger btn-xs' onclick='verinfo_escaneo("+data.id_escaneo+","+2+")'> <i class='fa fa-shield'> Ejecutar Hardening </i></button> <br> <button type='button' class='btn btn-info btn-xs' onclick='verinfo_escaneo("+data.id_escaneo+","+3+")'> <i class='fa fa-terminal'> Resultado Hardening </i></button> </td>"
 									}
-								//}
+								}
+								else if ($("#rol_usuario").val() === 'auditor') {
+									if ( row.hardening === "No ejecutado") {
+										return "<td><button type='button' class='btn btn-success btn-xs' onclick='verinfo_escaneo("+data.id_escaneo+","+1+")'> <i class='fa fa-print'> Resultado Escaneo </i></button>"
+									} else {
+										return "<td><button type='button' class='btn btn-success btn-xs' onclick='verinfo_escaneo("+data.id_escaneo+","+1+")'> <i class='fa fa-print'> Resultado Escaneo </i></button> <br> <button type='button' class='btn btn-info btn-xs' onclick='verinfo_escaneo("+data.id_escaneo+","+3+")'> <i class='fa fa-terminal'> Resultado Hardening </i></button> </td>"
+									}
+								}
 							}
 						},
     ]
